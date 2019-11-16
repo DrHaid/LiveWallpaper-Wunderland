@@ -9,17 +9,17 @@ public class DecayAfterTime : MonoBehaviour
 
   void Start()
   {
-    StartCoroutine(StartLifeTime());
     sprite = gameObject.GetComponent<SpriteRenderer>();
+    StartCoroutine(StartLifeTime());
   }
 
   public IEnumerator StartLifeTime()
   {
     yield return new WaitForSeconds(lifeTime);
 
+    //Fade out animation
     float elapsedTime = 0f;
     float fadeTime = 2f;
-    //Fade out animation
     while(elapsedTime < fadeTime)
     {
       elapsedTime += Time.deltaTime;

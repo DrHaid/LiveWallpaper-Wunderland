@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class WanderController : MonoBehaviour
 {
-  public GameObject wanderArea;
   public float maxWanderDistance;
   public float maxIdleTime;
   public float wanderingSpeed;
@@ -15,10 +14,19 @@ public class WanderController : MonoBehaviour
 
   void Start()
   {
-    usesWanderArea = (wanderArea != null) ? true : false;
-    if (usesWanderArea)
-      wanderAreaCollider = wanderArea.GetComponent<PolygonCollider2D>();
-    
+    //Try finding WanderArea
+    try
+    {
+      wanderAreaCollider = GameObject.FindGameObjectWithTag("WanderArea").GetComponent<PolygonCollider2D>();
+      usesWanderArea = true;
+    }
+    catch (System.NullReferenceException)
+    {
+      Debug.LogWarning("No Object with Tag WanderArea found or Object has no PolygonCollider2D. Wandering of " +
+        gameObject.name + " will be without bounds.");
+      usesWanderArea = false;
+    }
+
     previousX = gameObject.transform.position.x;
     isReadyForWander = true;
   }
@@ -57,7 +65,7 @@ public class WanderController : MonoBehaviour
     if (tryCounter >= 100)
     {
       Debug.LogWarning("No WanderArea near Object found. Readjusting...");
-      newDestination = wanderArea.transform.position;
+      newDestination = wanderAreaCollider.gameObject.transform.position;
     }
     return newDestination;
   }

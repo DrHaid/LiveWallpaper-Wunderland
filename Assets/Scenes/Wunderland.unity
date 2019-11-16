@@ -528,7 +528,7 @@ GameObject:
   - component: {fileID: 992407386}
   m_Layer: 0
   m_Name: WanderArea
-  m_TagString: Untagged
+  m_TagString: WanderArea
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

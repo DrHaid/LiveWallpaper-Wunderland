@@ -13,10 +13,13 @@ public class CowGameManager : MonoBehaviour
 
   void Start()
   {
-    foreach (GameObject cow in GameObject.FindGameObjectsWithTag("Cow"))
-    {
-      cowList.Add(cow);
-    }
+    InitializeCowGame();
+  }
+
+  public void InitializeCowGame()
+  {
+    cowList = GameObject.FindGameObjectsWithTag("Cow").ToList();
+    cowList.Shuffle();
     nextCowIndex = 0;
   }
 
