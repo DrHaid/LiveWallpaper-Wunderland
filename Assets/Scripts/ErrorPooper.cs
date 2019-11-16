@@ -7,28 +7,41 @@ public class ErrorPooper : MonoBehaviour, IPointerClickHandler
 {
   GameObject errorSpawnLocation;
   SpriteRenderer cowSprite;
-  AudioSource audioSource;
+  CowGameManager cowGameManager;
+
+  List<string> errorNames = new List<string> { "Error", "Warning", "Egg"};
 
   void Start()
   {
     cowSprite = gameObject.GetComponent<SpriteRenderer>();
-    audioSource = GameObject.Find("Audio Source").GetComponent<AudioSource>();
     errorSpawnLocation = gameObject.transform.GetChild(0).gameObject;
+    try
+    {
+      cowGameManager = GameObject.Find("CowGameManager").GetComponent<CowGameManager>();
+    }
+    catch (System.NullReferenceException)
+    {
+      Debug.LogWarning("Could not find CowGameManager for CowObject: " + gameObject.name);
+    }
   }
 
   public void OnPointerClick(PointerEventData eventData)
   {
-    poopError();
+    PoopError();
   }
 
   [ContextMenu("Poop Error")]
-  public void poopError()
+  public void PoopError()
   {
+    //Check if there is a cowGameManager, if not do the standard Error
+    string resourcePath = "Prefabs/Error";
+    if (cowGameManager != null)
+      resourcePath = "Prefabs/" + errorNames[cowGameManager.GetErrorTypeForCow(gameObject)];
+    
     //Instantiate Error Sprite, start animation and sound
-    GameObject newErrorObject = Instantiate(Resources.Load("Prefabs/Error", typeof(GameObject)), 
+    GameObject newErrorObject = Instantiate(Resources.Load(resourcePath, typeof(GameObject)), 
       errorSpawnLocation.transform.position, Quaternion.identity) as GameObject;
     StartCoroutine(AnimateError(newErrorObject, (gameObject.transform.rotation.eulerAngles.y != 0)));
-    audioSource.Play();
   }
 
   public IEnumerator AnimateError(GameObject errorObject, bool flipped)

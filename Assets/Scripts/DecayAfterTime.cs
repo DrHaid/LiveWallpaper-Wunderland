@@ -19,6 +19,7 @@ public class DecayAfterTime : MonoBehaviour
 
     float elapsedTime = 0f;
     float fadeTime = 2f;
+    //Fade out animation
     while(elapsedTime < fadeTime)
     {
       elapsedTime += Time.deltaTime;
