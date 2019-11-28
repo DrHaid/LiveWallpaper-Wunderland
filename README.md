@@ -17,5 +17,6 @@ This interactive Live Wallpaper with nostalgic vibes will make you the coolest k
 
 
 
+*Warning: This app will probably not work correctly with non 16:9 screens.*
+
 *Disclaimer: I do not own any imagery in this project (except the cows, obviously).*
-*This app will probably not work correctly with non 16:9 screens.*
