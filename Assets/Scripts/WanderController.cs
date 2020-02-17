@@ -22,8 +22,7 @@ public class WanderController : MonoBehaviour
     }
     catch (System.NullReferenceException)
     {
-      Debug.LogWarning("No Object with Tag WanderArea found or Object has no PolygonCollider2D. Wandering of " +
-        gameObject.name + " will be without bounds.");
+      Debug.LogWarning($"No Object with Tag WanderArea found or Object has no PolygonCollider2D. Wandering of {gameObject.name} will be without bounds.");
       usesWanderArea = false;
     }
 
@@ -51,7 +50,7 @@ public class WanderController : MonoBehaviour
   {
     int tryCounter = 0;
     Vector3 newDestination = Vector3.zero;
-    //Find new random point. If point is not in wanderArea, retry
+    //Find new random point. If point is not in WanderArea, retry
     do
     {
       newDestination =
@@ -59,7 +58,7 @@ public class WanderController : MonoBehaviour
       gameObject.transform.position.y + Random.Range(-maxWanderDistance, maxWanderDistance),
       gameObject.transform.position.z);
       tryCounter++;
-    } while (usesWanderArea && !wanderAreaCollider.OverlapPoint(newDestination) && (tryCounter < 100));
+    } while (usesWanderArea && !IsPointWithinBounds(newDestination) && (tryCounter < 100));
 
     //Too many tries indicates that WanderArea is too far away.
     if (tryCounter >= 100)
@@ -68,6 +67,15 @@ public class WanderController : MonoBehaviour
       newDestination = wanderAreaCollider.gameObject.transform.position;
     }
     return newDestination;
+  }
+
+  bool IsPointWithinBounds(Vector3 newDestination)
+  {
+    //Check if point is in viewport and in WanderArea
+    bool isWithinWanderArea = wanderAreaCollider.OverlapPoint(newDestination);
+    Vector3 viewPortPos = Camera.main.WorldToViewportPoint(newDestination);
+    bool isWithiView = (viewPortPos.x >= 0 && viewPortPos.x <= 1) && (viewPortPos.y >= 0 && viewPortPos.y <= 1) && (viewPortPos.z > 0);
+    return isWithinWanderArea && isWithiView;
   }
 
   public IEnumerator WanderToPosition(Vector3 destination)

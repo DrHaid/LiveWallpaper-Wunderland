@@ -310,6 +310,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxFramerate: 60
+  background: {fileID: 654197114}
 --- !u!1 &654197113
 GameObject:
   m_ObjectHideFlags: 0
