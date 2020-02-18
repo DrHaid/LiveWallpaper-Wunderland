@@ -7,6 +7,7 @@ TagManager:
   - Cow
   - Egg
   - WanderArea
+  - DeletedCow
   layers:
   - Default
   - TransparentFX

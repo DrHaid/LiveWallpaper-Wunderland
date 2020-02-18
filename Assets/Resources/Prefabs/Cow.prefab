@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 8913162144428327112}
   - component: {fileID: 4927380050154883820}
   - component: {fileID: 249624924930134284}
+  - component: {fileID: 3930539969207064626}
   m_Layer: 0
   m_Name: Cow
   m_TagString: Cow
@@ -97,7 +98,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8fe0ee1bbf1da714292839996a7be5ba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  wanderArea: {fileID: 0}
   maxWanderDistance: 4
   maxIdleTime: 8
   wanderingSpeed: 0.7
@@ -173,6 +173,18 @@ PolygonCollider2D:
       - {x: -0.29582867, y: 0.07582136}
       - {x: 0.04702846, y: 0.19010708}
       - {x: 0.07559989, y: 0.5901071}
+--- !u!114 &3930539969207064626
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1468334770624904369}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 39d538dfb94c1354f9e4824a72dc9a09, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2658534253272364325
 GameObject:
   m_ObjectHideFlags: 0

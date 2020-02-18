@@ -74,7 +74,10 @@ public class WanderController : MonoBehaviour
     //Check if point is in viewport and in WanderArea
     bool isWithinWanderArea = wanderAreaCollider.OverlapPoint(newDestination);
     Vector3 viewPortPos = Camera.main.WorldToViewportPoint(newDestination);
-    bool isWithiView = (viewPortPos.x >= 0 && viewPortPos.x <= 1) && (viewPortPos.y >= 0 && viewPortPos.y <= 1) && (viewPortPos.z > 0);
+    bool isWithiView = (viewPortPos.x >= 0 && viewPortPos.x <= 1) 
+      && (viewPortPos.y >= 0 
+      && viewPortPos.y <= 1) 
+      && (viewPortPos.z > 0);
     return isWithinWanderArea && isWithiView;
   }
 

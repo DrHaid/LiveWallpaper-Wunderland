@@ -27,7 +27,10 @@ public class ErrorPooper : MonoBehaviour, IPointerClickHandler
 
   public void OnPointerClick(PointerEventData eventData)
   {
-    PoopError();
+    if(eventData.button == PointerEventData.InputButton.Left)
+    {
+      PoopError();
+    }
   }
 
   [ContextMenu("Poop Error")]
