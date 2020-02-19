@@ -14,6 +14,21 @@ public class CowGameManager : MonoBehaviour
   void Start()
   {
     InitializeCowGame();
+    InvokeRepeating("SpawnCowsIfNoneExist", 5, 3);
+  }
+
+  void SpawnCowsIfNoneExist()
+  {
+    if(cowList.Count <= 0)
+    {
+      Instantiate(Resources.Load("Prefabs/Cow", typeof(GameObject)),
+        gameObject.transform.position + new Vector3(13f, -5f, 0f),
+        Quaternion.identity);
+      Instantiate(Resources.Load("Prefabs/Cow", typeof(GameObject)),
+        gameObject.transform.position + new Vector3(-13f, -5f, 0f),
+        Quaternion.identity);
+      InitializeCowGame();
+    }
   }
 
   public void InitializeCowGame()
