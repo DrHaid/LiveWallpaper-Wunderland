@@ -4,11 +4,11 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class CowDeleter : MonoBehaviour, IPointerClickHandler
+public class CowDeleter : MonoBehaviour
 {
-  public void OnPointerClick(PointerEventData eventData)
+   private void OnCollisionEnter2D(Collision2D collision)
   {
-    if (eventData.button == PointerEventData.InputButton.Right)
+    if(collision.gameObject.tag == "RecycleBin")
     {
       DeleteCow();
     }
