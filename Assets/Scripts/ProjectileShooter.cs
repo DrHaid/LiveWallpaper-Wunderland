@@ -6,6 +6,7 @@ using UnityEngine.EventSystems;
 public class ProjectileShooter : MonoBehaviour
 {
   public GameObject projectile;
+  public float maxStretch;
   public float strengthMultiplier;
   public LineRenderer line;
   private float power;
@@ -21,17 +22,15 @@ public class ProjectileShooter : MonoBehaviour
       startPos.Scale(new Vector3(1, 1, 0));
       isDrawing = true;
       line.enabled = true;
-      Debug.Log("Down");
     }
     if (Input.GetMouseButtonUp(0))
     {
       isDrawing = false;
       line.enabled = false;
-      if(Vector3.Distance(startPos, destPos) >= 0.1) //Don't react on click
+      if(Vector3.Distance(startPos, destPos) >= 0.2) //Don't shoot on click
       {
         ShootProjectile();
       }
-      Debug.Log("Up");
     }
     if (isDrawing)
     {
@@ -43,7 +42,7 @@ public class ProjectileShooter : MonoBehaviour
 
   void SetLinePositions()
   {
-    power = Vector3.Distance(startPos, destPos).Remap01(0, 10);
+    power = Vector3.Distance(startPos, destPos).Remap01(0, maxStretch);
     Color lineColor;
     if (power < 0.5f)
     {
@@ -60,12 +59,12 @@ public class ProjectileShooter : MonoBehaviour
 
   void ShootProjectile()
   {
-    Debug.Log("Bang!");
     Vector3 dir = (startPos - destPos).normalized;
-    GameObject recycleBin = Instantiate(Resources.Load("Prefabs/RecycleBin", typeof(GameObject)),
+    GameObject recycleBin = Instantiate(projectile,
        startPos,
        Quaternion.identity) as GameObject;
-    recycleBin.GetComponent<Rigidbody2D>().AddForce(new Vector2(dir.x, dir.y) * (power*strengthMultiplier), ForceMode2D.Impulse);
+    recycleBin.GetComponent<Rigidbody2D>()
+      .AddForce(new Vector2(dir.x, dir.y) * (power*strengthMultiplier), ForceMode2D.Impulse);
   }
 }
 
