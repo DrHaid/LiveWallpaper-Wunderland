@@ -93,7 +93,8 @@ public class TerrainGenerator
     {
       polyColliderPoints.Add(item.vertices[1]);
     }
-    polyColliderPoints.Add(terrainParts[(index + count) - 1].vertices[0]); //TODO: - 1 not good. last segment has no collision
+    polyColliderPoints.Add(terrainParts[(index + count) - 1].vertices[3]);
+    polyColliderPoints.Add(terrainParts[(index + count) - 1].vertices[2]); //TODO: - 1 not good. last segment has no collision
     return polyColliderPoints;  
   }
 }

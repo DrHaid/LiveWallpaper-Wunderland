@@ -14,6 +14,7 @@ public class WorldBuilder : MonoBehaviour
   [Space]
   [Header("Enemies")]
   public GameObject EnemyPrefab;
+  public int SkipSpawn;
   public float SpawnRate;
   [Space]
   [Header("Rendering")]
@@ -30,7 +31,7 @@ public class WorldBuilder : MonoBehaviour
     meshFilter = GetComponent<MeshFilter>();
     polyCollider = GetComponent<PolygonCollider2D>();
     terrainGenerator = new TerrainGenerator(Scale, Amplification, Spacing, VerticalOffset);
-    enemySpawner = new EnemySpawner(SpawnRate, EnemyPrefab);
+    enemySpawner = new EnemySpawner(SpawnRate, EnemyPrefab, SkipSpawn);
   }
 
   private void FixedUpdate()
@@ -49,6 +50,6 @@ public class WorldBuilder : MonoBehaviour
     polyCollider.SetPath(0, terrainGenerator.GetPolyColliderPoints(terrainIndex, terrainPartCount));
 
     enemySpawner.UpdateEnemies(terrainGenerator.terrainParts);
-    enemySpawner.DrawEnemiesInView(PositionX, FieldOfView);
+    enemySpawner.DrawEnemiesInView(PositionX, FieldOfView, Spacing);
   }
 }
