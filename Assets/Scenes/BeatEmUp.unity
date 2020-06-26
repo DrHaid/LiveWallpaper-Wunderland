@@ -389,7 +389,7 @@ GameObject:
   - component: {fileID: 862609849}
   - component: {fileID: 862609851}
   m_Layer: 8
-  m_Name: Terrain
+  m_Name: Environment
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -426,8 +426,11 @@ MonoBehaviour:
   Amplification: 5
   Spacing: 2
   VerticalOffset: 0.1
-  Index: 0
-  Count: 15
+  EnemyPrefab: {fileID: 6021328220116222837, guid: 370fb72230af3284aa920935910d8bc7,
+    type: 3}
+  SpawnRate: 0.1
+  PositionX: 0
+  FieldOfView: 25
 --- !u!23 &862609849
 MeshRenderer:
   m_ObjectHideFlags: 0

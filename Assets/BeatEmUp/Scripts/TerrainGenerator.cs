@@ -24,6 +24,7 @@ public class TerrainGenerator
     if(index < 0 || count < 0)
     {
       Debug.LogWarning("Could not GetMeshSection. index or count negative");
+      return null;
     }
     if(terrainParts.Count == 0)
     {
