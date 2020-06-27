@@ -48,19 +48,14 @@ public class PlayerAttack : MonoBehaviour
 		RaycastHit2D[] hits = Physics2D.CircleCastAll(attack.origin.position, attack.radius, attack.direction, attack.range);
 		foreach(var hit in hits)
 		{
-			if(hit.collider.gameObject == gameObject)
+			if(hit.collider.gameObject.tag != "Enemy")
 			{
 				continue;
 			}
-			HandleHit(hit, attack);
-		}
-	}
-
-	void HandleHit(RaycastHit2D hit, Attack attack)
-	{
-		if (hit.transform.TryGetComponent<Rigidbody2D>(out Rigidbody2D rb2D))
-		{
-			rb2D.AddForce(attack.direction * attack.strength, ForceMode2D.Impulse);
+			if (hit.transform.TryGetComponent<EnemyAI>(out EnemyAI enemyAI))
+			{
+				enemyAI.PerformKnockOut(attack);
+			}
 		}
 	}
 }

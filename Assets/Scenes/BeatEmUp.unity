@@ -1037,6 +1037,26 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2598745030404115713, guid: afbb425e29debb544a36cb74c0046e02,
+        type: 3}
+      propertyPath: debugDrawAttacks
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2598745030404115713, guid: afbb425e29debb544a36cb74c0046e02,
+        type: 3}
+      propertyPath: primaryAttack.strength
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2598745030404115713, guid: afbb425e29debb544a36cb74c0046e02,
+        type: 3}
+      propertyPath: specialAttack.strength
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 2598745030404115714, guid: afbb425e29debb544a36cb74c0046e02,
+        type: 3}
+      propertyPath: jumpForce
+      value: 2500
+      objectReference: {fileID: 0}
     - target: {fileID: 2598745030404115720, guid: afbb425e29debb544a36cb74c0046e02,
         type: 3}
       propertyPath: m_Name

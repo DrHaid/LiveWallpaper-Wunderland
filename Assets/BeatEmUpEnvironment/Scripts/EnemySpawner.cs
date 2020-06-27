@@ -12,7 +12,7 @@ public class EnemySpawner
   public int skipSpawn { get; private set; }
   public List<Enemy> enemies { get; set; }
 
-  public EnemySpawner instance { get; private set; }
+  public static EnemySpawner instance { get; private set; }
 
   public EnemySpawner(float spawnRate, GameObject prefab, int skipSpawn)
   {
@@ -53,8 +53,9 @@ public class EnemySpawner
     enemies.Add(enemy);
   }
 
-  public void DeleteEnemy(GameObject enemyToDelete)
+  public void DeleteEnemy(GameObject enemyToDelete, float delay)
   {
     enemies.Remove(enemies.FirstOrDefault(x => x.EnemyObject == enemyToDelete));
+    GameObject.Destroy(enemyToDelete, delay);
   }
 }

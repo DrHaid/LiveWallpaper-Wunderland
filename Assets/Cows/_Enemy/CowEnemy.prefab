@@ -11,11 +11,11 @@ GameObject:
   - component: {fileID: 3153249718103116837}
   - component: {fileID: 7477925342832972551}
   - component: {fileID: 7984088975163780512}
-  - component: {fileID: -3367789666624942652}
+  - component: {fileID: -1019681012623375213}
   - component: {fileID: 3223329380499214687}
   m_Layer: 10
   m_Name: CowEnemy
-  m_TagString: Cow
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -104,9 +104,9 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
---- !u!61 &-3367789666624942652
-BoxCollider2D:
+  m_Constraints: 4
+--- !u!70 &-1019681012623375213
+CapsuleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -118,19 +118,9 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.018457174, y: 0.9858532}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.49354005, y: 0.094182715}
-    oldSize: {x: 2.857143, y: 2.2285714}
-    newSize: {x: 0.16, y: 0.16}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 2.140298, y: 1.8864417}
-  m_EdgeRadius: 0
+  m_Offset: {x: -0.07349704, y: 0.029882193}
+  m_Size: {x: 1.0787826, y: 2.8080592}
+  m_Direction: 0
 --- !u!114 &3223329380499214687
 MonoBehaviour:
   m_ObjectHideFlags: 0

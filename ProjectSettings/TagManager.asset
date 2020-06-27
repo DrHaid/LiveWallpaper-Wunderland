@@ -9,6 +9,7 @@ TagManager:
   - WanderArea
   - DeletedCow
   - RecycleBin
+  - Enemy
   layers:
   - Default
   - TransparentFX
