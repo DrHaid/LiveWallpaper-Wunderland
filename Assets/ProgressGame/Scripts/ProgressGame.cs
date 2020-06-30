@@ -8,44 +8,75 @@ public class ProgressGame : MonoBehaviour
 {
   [Range(0, 1)]
   public float Progress;
+  public float ProgressPerEnemy;
 
   public GameObject UnlockableUIPrefab;
+  public Slider Slider;
   public List<Unlockable> Unlockables;
 
-  private Slider slider;
+  public static ProgressGame instance;
+
+  private void Awake()
+  {
+    instance = this;
+  }
 
   void Start()
   {
-    slider = GetComponent<Slider>();
-    PositionUnlockables();
+    InitUnlockablePositions();
   }
 
   void Update()
   {
-    slider.value = Progress;
+    Slider.value = Progress;
+    CheckUnlock();
   }
 
-  private void PositionUnlockables()
+  private void InitUnlockablePositions()
   {
-    var spacing = slider.fillRect.rect.width / Unlockables.Count;
+    var spacing = Slider.fillRect.rect.width / Unlockables.Count;
     for(int i = 0; i < Unlockables.Count; i++)
     {
-      var leftAnchor = gameObject.transform.position;
-      leftAnchor.x -= slider.fillRect.rect.width / 2;
+      var leftAnchor = Slider.gameObject.transform.position;
+      leftAnchor.x -= Slider.fillRect.rect.width / 2;
       Unlockables[i].UiObject = Instantiate(
         UnlockableUIPrefab,
         leftAnchor + new Vector3(spacing * (i + 1), 0, 0), 
         Quaternion.identity, 
-        gameObject.transform);
+        Slider.gameObject.transform);
       Unlockables[i].UiObject.GetComponent<Image>().sprite = Unlockables[i].Sprite;
+      Unlockables[i].UnlockProgress = (float)(i + 1) / (float)Unlockables.Count;
     }
+  }
+
+  private void CheckUnlock()
+  {
+    foreach(var unlockable in Unlockables)
+    {
+      if(!unlockable.Unlocked && Progress >= unlockable.UnlockProgress)
+      {
+        unlockable.Unlock();
+      }
+    }
+  }
+
+  public void AddProgress()
+  {
+    Progress = Mathf.Clamp01(Progress + ProgressPerEnemy);
   }
 }
 
 [Serializable]
 public class Unlockable
 {
-  public bool Unlocked;
+  [HideInInspector] public bool Unlocked;
   public Sprite Sprite;
-  public GameObject UiObject;
+  [HideInInspector] public GameObject UiObject;
+  [HideInInspector] public float UnlockProgress;
+
+  public void Unlock()
+  {
+    Unlocked = true;
+    UiObject.transform.GetChild(0).gameObject.SetActive(true);
+  }
 }

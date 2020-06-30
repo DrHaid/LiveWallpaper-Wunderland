@@ -52,6 +52,7 @@ public class EnemyAI : MonoBehaviour
     GameObject explosion = Instantiate(Resources.Load("Prefabs/Explosion", typeof(GameObject)),
        gameObject.transform.position,
        Quaternion.identity) as GameObject;
+    ProgressGame.instance.AddProgress();
     EnemySpawner.instance.DeleteEnemy(gameObject, explosion.GetComponent<Animator>().runtimeAnimatorController.animationClips[0].length * 0.10f);
   }
 }
