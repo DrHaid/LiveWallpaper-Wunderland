@@ -292,7 +292,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
 --- !u!1 &424985455
 GameObject:
@@ -638,15 +638,6 @@ MonoBehaviour:
   UnlockableUIPrefab: {fileID: 327932797030938401, guid: 9b0c3cf0bfdddf346ad7ff1b6172e70f,
     type: 3}
   Slider: {fileID: 2130591282}
-  Unlockables:
-  - Unlocked: 0
-    Sprite: {fileID: 21300000, guid: c4c85226e1d619445964f20e51dd412c, type: 3}
-    UiObject: {fileID: 0}
-    UnlockProgress: 0
-  - Unlocked: 0
-    Sprite: {fileID: 21300000, guid: 19b8170c5be1f8f49bd56a38a734dfaf, type: 3}
-    UiObject: {fileID: 0}
-    UnlockProgress: 0
 --- !u!4 &704655597
 Transform:
   m_ObjectHideFlags: 0
@@ -659,7 +650,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &932473819
 GameObject:
@@ -921,7 +912,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1006093498
 MonoBehaviour:
@@ -1246,7 +1237,7 @@ PrefabInstance:
     - target: {fileID: 2598745030404115721, guid: afbb425e29debb544a36cb74c0046e02,
         type: 3}
       propertyPath: m_RootOrder
-      value: 3
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 2598745030404115721, guid: afbb425e29debb544a36cb74c0046e02,
         type: 3}
@@ -1433,6 +1424,55 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &1544856691
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1544856692}
+  - component: {fileID: 1544856693}
+  m_Layer: 0
+  m_Name: ProgressLoader
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1544856692
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1544856691}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 539.9746, y: 315.00247, z: -2258.4375}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1544856693
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1544856691}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e788d7c9db5a4c4bbb951d8a6cf2295, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  defaultProgress: 0
+  StandardUnlockables:
+  - name: crown
+    unlocked: 0
+  - name: tophat
+    unlocked: 0
 --- !u!1 &1641650448
 GameObject:
   m_ObjectHideFlags: 0
@@ -1465,7 +1505,7 @@ Transform:
   - {fileID: 1895600656}
   - {fileID: 1325525224}
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!61 &1641650450
 BoxCollider2D:
@@ -1666,7 +1706,7 @@ RectTransform:
   m_Children:
   - {fileID: 2130591281}
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -1704,7 +1744,7 @@ Transform:
   - {fileID: 950678012}
   - {fileID: 2134520797}
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2130591280
 GameObject:
@@ -1941,7 +1981,7 @@ PrefabInstance:
     - target: {fileID: 5403420584403918257, guid: 5de85e63326891e4ab5051ab7e436b83,
         type: 3}
       propertyPath: m_RootOrder
-      value: 4
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 5403420584403918257, guid: 5de85e63326891e4ab5051ab7e436b83,
         type: 3}

@@ -53,7 +53,7 @@ MonoBehaviour:
   VerticalOffset: 0.1
   EnemyPrefab: {fileID: 1468334770624904369, guid: cff503f3a9c3761469c75d328ff2b8f7,
     type: 3}
-  SkipSpawn: 10
+  SkipSpawn: 15
   SpawnRate: 0.1
   PositionX: 0
   FieldOfView: 30

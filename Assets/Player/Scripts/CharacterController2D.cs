@@ -7,12 +7,12 @@ using UnityEngine.InputSystem;
 
 public class CharacterController2D : MonoBehaviour
 {
-	[SerializeField] private float walkSpeed = 1f;
-	[SerializeField] private float jumpForce = 400f;
-	[Range(0, .3f)] [SerializeField] private float movementSmoothing = .05f;
-	[SerializeField] private bool airControl = false;
-	[SerializeField] private float groundTestHight;
-	[SerializeField] private LayerMask whatIsGround;
+	public float WalkSpeed = 1f;
+	public float JumpForce = 400f;
+	[Range(0, .3f)] public float MovementSmoothing = .05f;
+	public bool AirControl = false;
+	public float GroundTestHight;
+	public LayerMask WhatIsGround;
 
 	private BoxCollider2D col2D;
 	private Rigidbody2D rb2D;
@@ -36,15 +36,15 @@ public class CharacterController2D : MonoBehaviour
 	{
 		bool isGrounded = IsGrounded();
 
-		if (isGrounded || airControl)
+		if (isGrounded || AirControl)
 		{
-			Vector3 targetVelocity = new Vector2(move * walkSpeed, rb2D.velocity.y);
-			rb2D.velocity = Vector3.SmoothDamp(rb2D.velocity, targetVelocity, ref currentVelocity, movementSmoothing);
+			Vector3 targetVelocity = new Vector2(move * WalkSpeed, rb2D.velocity.y);
+			rb2D.velocity = Vector3.SmoothDamp(rb2D.velocity, targetVelocity, ref currentVelocity, MovementSmoothing);
 		}
 
 		if (isGrounded && jump)
 		{
-			rb2D.AddForce(new Vector2(0f, jumpForce));
+			rb2D.AddForce(new Vector2(0f, JumpForce));
 			isJumping = false;
 		}
 
@@ -55,7 +55,7 @@ public class CharacterController2D : MonoBehaviour
 
 	private bool IsGrounded()
 	{
-		RaycastHit2D hit = Physics2D.BoxCast(col2D.bounds.center, col2D.bounds.size, 0f, Vector2.down, groundTestHight, whatIsGround);
+		RaycastHit2D hit = Physics2D.BoxCast(col2D.bounds.center, col2D.bounds.size, 0f, Vector2.down, GroundTestHight, WhatIsGround);
 		return hit.collider != null;
 	}
 

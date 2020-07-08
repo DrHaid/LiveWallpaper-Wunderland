@@ -12,7 +12,8 @@ public class ProgressGame : MonoBehaviour
 
   public GameObject UnlockableUIPrefab;
   public Slider Slider;
-  public List<Unlockable> Unlockables;
+  
+  private List<ProgressBarUnlockable> Unlockables;
 
   public static ProgressGame instance;
 
@@ -24,6 +25,7 @@ public class ProgressGame : MonoBehaviour
   void Start()
   {
     InitUnlockablePositions();
+    Progress = ProgressSaveManager.Progress;
   }
 
   void Update()
@@ -34,18 +36,14 @@ public class ProgressGame : MonoBehaviour
 
   private void InitUnlockablePositions()
   {
+    Unlockables = ProgressSaveManager.GetProgressBarUnlockables();
     var spacing = Slider.fillRect.rect.width / Unlockables.Count;
+
     for(int i = 0; i < Unlockables.Count; i++)
     {
       var leftAnchor = Slider.gameObject.transform.position;
       leftAnchor.x -= Slider.fillRect.rect.width / 2;
-      Unlockables[i].UiObject = Instantiate(
-        UnlockableUIPrefab,
-        leftAnchor + new Vector3(spacing * (i + 1), 0, 0), 
-        Quaternion.identity, 
-        Slider.gameObject.transform);
-      Unlockables[i].UiObject.GetComponent<Image>().sprite = Unlockables[i].Sprite;
-      Unlockables[i].UnlockProgress = (float)(i + 1) / (float)Unlockables.Count;
+      Unlockables[i].Initialize(leftAnchor, spacing, i, Unlockables.Count, UnlockableUIPrefab, Slider.transform);
     }
   }
 
@@ -56,6 +54,7 @@ public class ProgressGame : MonoBehaviour
       if(!unlockable.Unlocked && Progress >= unlockable.UnlockProgress)
       {
         unlockable.Unlock();
+        ProgressSaveManager.OverwriteSave(Progress, Unlockables);
       }
     }
   }
@@ -63,16 +62,32 @@ public class ProgressGame : MonoBehaviour
   public void AddProgress()
   {
     Progress = Mathf.Clamp01(Progress + ProgressPerEnemy);
+    ProgressSaveManager.OverwriteSave(Progress, Unlockables);
   }
 }
 
-[Serializable]
-public class Unlockable
+public class ProgressBarUnlockable
 {
-  [HideInInspector] public bool Unlocked;
+  public bool Unlocked;
   public Sprite Sprite;
-  [HideInInspector] public GameObject UiObject;
-  [HideInInspector] public float UnlockProgress;
+  public GameObject UiObject;
+  public float UnlockProgress;
+
+  public void Initialize(Vector3 leftAnchor, float spacing, int index, int unlockableCount, GameObject uiPrefab, Transform parent)
+  {
+    UiObject = GameObject.Instantiate(
+        uiPrefab,
+        leftAnchor + new Vector3(spacing * (index + 1), 0, 0),
+        Quaternion.identity,
+        parent);
+    UiObject.GetComponent<Image>().sprite = Sprite;
+    UnlockProgress = (float)(index + 1) / (float)unlockableCount;
+
+    if (Unlocked)
+    {
+      Unlock();
+    }
+  }
 
   public void Unlock()
   {

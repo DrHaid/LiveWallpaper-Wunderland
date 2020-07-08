@@ -5,24 +5,24 @@ using UnityEngine;
 
 public class PlayerAttack : MonoBehaviour
 {
-	[SerializeField] bool debugDrawAttacks;
-	[SerializeField] private Attack primaryAttack;
-	[SerializeField] private Attack specialAttack;
+	public bool DebugDrawAttacks;
+	public Attack PrimaryAttack;
+	public Attack SpecialAttack;
 
 	private void Update()
 	{
-		primaryAttack.UpdateDirection();
-		specialAttack.UpdateDirection();
+		PrimaryAttack.UpdateDirection();
+		SpecialAttack.UpdateDirection();
 
-		if (!debugDrawAttacks)
+		if (!DebugDrawAttacks)
 		{
 			return;
 		}
-		Debug.DrawLine(primaryAttack.origin.position,
-			primaryAttack.origin.position + primaryAttack.direction * primaryAttack.range, 
+		Debug.DrawLine(PrimaryAttack.origin.position,
+			PrimaryAttack.origin.position + PrimaryAttack.direction * PrimaryAttack.range, 
 			Color.green);
-		Debug.DrawLine(specialAttack.origin.position,
-			specialAttack.origin.position + specialAttack.direction * specialAttack.range,
+		Debug.DrawLine(SpecialAttack.origin.position,
+			SpecialAttack.origin.position + SpecialAttack.direction * SpecialAttack.range,
 			Color.red);
 	}
 
@@ -30,7 +30,7 @@ public class PlayerAttack : MonoBehaviour
 	{
     if (PlayerAnimation.current.Attack())
     {
-			StartCoroutine(PerformAttack(primaryAttack));
+			StartCoroutine(PerformAttack(PrimaryAttack));
     }
 	}
 
@@ -38,7 +38,7 @@ public class PlayerAttack : MonoBehaviour
 	{
     if (PlayerAnimation.current.SpecialAttack())
     {
-			StartCoroutine(PerformAttack(specialAttack));
+			StartCoroutine(PerformAttack(SpecialAttack));
     }
 	}
 

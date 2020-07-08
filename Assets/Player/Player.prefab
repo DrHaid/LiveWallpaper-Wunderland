@@ -230,14 +230,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5a816b119eebdb2478fc9e09133e98f3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  walkSpeed: 5
-  jumpForce: 2500
-  movementSmoothing: 0.05
-  airControl: 1
-  groundTestHight: 0.2
-  whatIsGround:
+  WalkSpeed: 5
+  JumpForce: 2000
+  MovementSmoothing: 0.05
+  AirControl: 1
+  GroundTestHight: 0.2
+  WhatIsGround:
     serializedVersion: 2
-    m_Bits: 311
+    m_Bits: 4294967295
 --- !u!114 &2598745030404115712
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -274,16 +274,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 75b43c993f7c5bf459dc9ef902ab88bc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  debugDrawAttacks: 1
-  primaryAttack:
-    strength: 5
+  DebugDrawAttacks: 0
+  PrimaryAttack:
+    strength: 4
     range: 1.2
     radius: 0.1
     delay: 0.2
     direction: {x: 0, y: 0, z: 0}
     origin: {fileID: 2598745031315559305}
-  specialAttack:
-    strength: 12
+  SpecialAttack:
+    strength: 8
     range: 1.5
     radius: 0.2
     delay: 0.8

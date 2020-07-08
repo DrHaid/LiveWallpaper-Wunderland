@@ -20,9 +20,14 @@ public class EnemyAI : MonoBehaviour
 
   void Update()
   {
-    if(Mathf.Abs(player.transform.position.x - gameObject.transform.position.x) < 0.2f
-      || isKnockedOut)
+    if (isKnockedOut)
     {
+      return;
+    }
+
+    if(Mathf.Abs(player.transform.position.x - gameObject.transform.position.x) < 0.2f)
+    {
+      //do damage
       return;
     }
 
