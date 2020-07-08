@@ -9,17 +9,23 @@ public class ProgressGame : MonoBehaviour
   [Range(0, 1)]
   public float Progress;
   public float ProgressPerEnemy;
+  public float ProgressLossPerEnemyHit;
+  public float DamageTimeOutDuration;
+
 
   public GameObject UnlockableUIPrefab;
   public Slider Slider;
   
   private List<ProgressBarUnlockable> Unlockables;
+  private bool damageTimeOut;
+  private AudioSource oofSource;
 
   public static ProgressGame instance;
 
   private void Awake()
   {
     instance = this;
+    oofSource = GetComponent<AudioSource>();
   }
 
   void Start()
@@ -53,7 +59,12 @@ public class ProgressGame : MonoBehaviour
     {
       if(!unlockable.Unlocked && Progress >= unlockable.UnlockProgress)
       {
-        unlockable.Unlock();
+        unlockable.Unlock(true);
+        ProgressSaveManager.OverwriteSave(Progress, Unlockables);
+      }
+      else if(unlockable.Unlocked && Progress < unlockable.UnlockProgress)
+      {
+        unlockable.Unlock(false);
         ProgressSaveManager.OverwriteSave(Progress, Unlockables);
       }
     }
@@ -63,6 +74,25 @@ public class ProgressGame : MonoBehaviour
   {
     Progress = Mathf.Clamp01(Progress + ProgressPerEnemy);
     ProgressSaveManager.OverwriteSave(Progress, Unlockables);
+  }
+
+  public void RemoveProgress()
+  {
+    if (damageTimeOut)
+    {
+      return;
+    }
+    Progress = Mathf.Clamp01(Progress - ProgressLossPerEnemyHit);
+    ProgressSaveManager.OverwriteSave(Progress, Unlockables);
+    oofSource.Play();
+    StartCoroutine(SetTimeOut());
+  }
+
+  IEnumerator SetTimeOut()
+  {
+    damageTimeOut = true;
+    yield return new WaitForSeconds(DamageTimeOutDuration);
+    damageTimeOut = false;
   }
 }
 
@@ -85,13 +115,13 @@ public class ProgressBarUnlockable
 
     if (Unlocked)
     {
-      Unlock();
+      Unlock(true);
     }
   }
 
-  public void Unlock()
+  public void Unlock(bool unlock)
   {
-    Unlocked = true;
-    UiObject.transform.GetChild(0).gameObject.SetActive(true);
+    Unlocked = unlock;
+    UiObject.transform.GetChild(0).gameObject.SetActive(unlock);
   }
 }

@@ -27,7 +27,7 @@ public class EnemyAI : MonoBehaviour
 
     if(Mathf.Abs(player.transform.position.x - gameObject.transform.position.x) < 0.2f)
     {
-      //do damage
+      ProgressGame.instance.RemoveProgress();
       return;
     }
 
