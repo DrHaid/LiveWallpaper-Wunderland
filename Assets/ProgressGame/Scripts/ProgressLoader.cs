@@ -10,6 +10,11 @@ public class ProgressLoader : MonoBehaviour
 
   void Awake()
   {
+    if(ProgressSaveManager.UnlockableJson != null)
+    {
+      return;
+    }
+
     if (ProgressSaveManager.LoadSave())
     {
       return;

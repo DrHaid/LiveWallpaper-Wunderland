@@ -21,6 +21,11 @@ public class CowDeleter : MonoBehaviour
     GameObject explosion = Instantiate(Resources.Load("Prefabs/Explosion", typeof(GameObject)),
        gameObject.transform.position + new Vector3(0f, 1f, 0f), 
        Quaternion.identity) as GameObject;
+    
+    if(PullerHandler.instance != null)
+    {
+      PullerHandler.instance.OnCowDestroy();
+    }
     Destroy(gameObject, explosion.GetComponent<Animator>().runtimeAnimatorController.animationClips[0].length * 0.25f);
   }
 }
