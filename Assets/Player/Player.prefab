@@ -237,7 +237,7 @@ MonoBehaviour:
   GroundTestHight: 0.2
   WhatIsGround:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 1335
 --- !u!114 &2598745030404115712
 MonoBehaviour:
   m_ObjectHideFlags: 0

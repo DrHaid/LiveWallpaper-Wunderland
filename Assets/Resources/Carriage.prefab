@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1116820166237273764}
   - component: {fileID: 1116820166237273763}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Cart
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -91,7 +91,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1116820166832861039}
   - component: {fileID: 1116820166832861038}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Reigns
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -173,7 +173,8 @@ GameObject:
   - component: {fileID: 1116820167120495726}
   - component: {fileID: 1116820167120495725}
   - component: {fileID: -2886478415168634360}
-  m_Layer: 9
+  - component: {fileID: 2866620071157327739}
+  m_Layer: 11
   m_Name: Carriage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -244,6 +245,18 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &2866620071157327739
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1116820167120495727}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0f07f24ce1ff6b14697eed6b70c33341, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1116820167568774552
 GameObject:
   m_ObjectHideFlags: 0
@@ -254,7 +267,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1116820167568774551}
   - component: {fileID: 1116820167568774550}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: WorkCow
   m_TagString: Untagged
   m_Icon: {fileID: 0}
