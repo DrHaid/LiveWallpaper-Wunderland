@@ -45,7 +45,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   defaultProgress: 0
   StandardUnlockables:
+  - name: tophat
+    unlocked: 0
+  - name: basecap
+    unlocked: 0
+  - name: santahat
+    unlocked: 0
   - name: crown
     unlocked: 0
-  - name: tophat
+  - name: krusty
     unlocked: 0

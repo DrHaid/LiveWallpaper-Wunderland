@@ -2292,6 +2292,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: ProgressLoader
       objectReference: {fileID: 0}
+    - target: {fileID: 3140274315161787602, guid: 40138307f5488374893a3871dbef7dc7,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3140274315161787605, guid: 40138307f5488374893a3871dbef7dc7,
         type: 3}
       propertyPath: m_LocalPosition.x
