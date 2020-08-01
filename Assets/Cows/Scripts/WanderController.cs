@@ -49,7 +49,7 @@ public class WanderController : MonoBehaviour
   Vector3 GetRandomDestination()
   {
     int tryCounter = 0;
-    Vector3 newDestination = Vector3.zero;
+    Vector3 newDestination;
     //Find new random point. If point is not in WanderArea, retry
     do
     {

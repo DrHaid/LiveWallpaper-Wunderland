@@ -56,7 +56,7 @@ public class EggHatcher : MonoBehaviour
         yield return null;
       }
     }
-    GameObject.Find("CowGameManager").GetComponent<CowGameManager>().InitializeCowGame();
+    FindObjectOfType<CowGameManager>().InitializeCowGame();
     yield return new WaitForSeconds(2);
 
     //Fade out animation
