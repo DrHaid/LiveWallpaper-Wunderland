@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
-using UnityEngine.InputSystem;
 
 public class ProjectileShooter : MonoBehaviour
 {
@@ -17,14 +16,14 @@ public class ProjectileShooter : MonoBehaviour
 
   void Update()
   {
-    if (Mouse.current.leftButton.wasPressedThisFrame)
+    if (Input.GetMouseButtonDown(0))
     {
-      startPos = Camera.main.ScreenToWorldPoint(Mouse.current.position.ReadValue());
+      startPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
       startPos.Scale(new Vector3(1, 1, 0));
       isDrawing = true;
       line.enabled = true;
     }
-    if (Mouse.current.leftButton.wasReleasedThisFrame)
+    if (Input.GetMouseButtonUp(0))
     {
       isDrawing = false;
       line.enabled = false;
@@ -35,7 +34,7 @@ public class ProjectileShooter : MonoBehaviour
     }
     if (isDrawing)
     {
-      destPos = Camera.main.ScreenToWorldPoint(Mouse.current.position.ReadValue());
+      destPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
       destPos.Scale(new Vector3(1, 1, 0));
       SetLinePositions();
     }

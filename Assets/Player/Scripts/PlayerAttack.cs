@@ -26,7 +26,7 @@ public class PlayerAttack : MonoBehaviour
 			Color.red);
 	}
 
-	private void OnMainAttack()
+	public void OnMainAttack()
 	{
     if (PlayerAnimation.current.Attack())
     {
@@ -34,7 +34,7 @@ public class PlayerAttack : MonoBehaviour
     }
 	}
 
-	private void OnSpecialAttack()
+	public void OnSpecialAttack()
 	{
     if (PlayerAnimation.current.SpecialAttack())
     {

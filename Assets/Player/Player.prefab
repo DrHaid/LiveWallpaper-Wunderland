@@ -43,7 +43,7 @@ GameObject:
   - component: {fileID: 2598745030404115716}
   - component: {fileID: 2598745030404115717}
   - component: {fileID: 2598745030404115719}
-  - component: {fileID: 2598745030404115715}
+  - component: {fileID: 1998628625940129836}
   - component: {fileID: 2598745030404115714}
   - component: {fileID: 2598745030404115712}
   - component: {fileID: 2598745030404115742}
@@ -187,7 +187,7 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &2598745030404115715
+--- !u!114 &1998628625940129836
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -196,28 +196,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 2598745030404115720}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 62899f850307741f2a39c98a8b639597, type: 3}
+  m_Script: {fileID: 11500000, guid: 7e352d055c3f29940afd6ca8d1769120, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Actions: {fileID: -944628639613478452, guid: 63e6e62ff2ee11f419e89683a2a9cc94,
-    type: 3}
-  m_NotificationBehavior: 0
-  m_UIInputModule: {fileID: 0}
-  m_DeviceLostEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  m_DeviceRegainedEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  m_ControlsChangedEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  m_ActionEvents: []
-  m_NeverAutoSwitchControlSchemes: 0
-  m_DefaultControlScheme: 
-  m_DefaultActionMap: Player
-  m_SplitScreenIndex: -1
-  m_Camera: {fileID: 0}
+  LongClickDuration: 0.2
+  MousePlayerDistanceThreshold: 100
 --- !u!114 &2598745030404115714
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
-using UnityEngine.InputSystem;
+//using UnityEngine.InputSystem; //New Input System not used
 
 public class CharacterController2D : MonoBehaviour
 {
@@ -27,10 +27,10 @@ public class CharacterController2D : MonoBehaviour
 		col2D = GetComponent<BoxCollider2D>();
 	}
 
-	private void Update()
-	{
-		Move(inputVector.x, isJumping);
-	}
+	//private void Update()
+	//{
+	//	Move(inputVector.x, isJumping);
+	//}
 
 	public void Move(float move, bool jump)
 	{
@@ -59,13 +59,14 @@ public class CharacterController2D : MonoBehaviour
 		return hit.collider != null;
 	}
 
-	private void OnMovement(InputValue inputValue)
-  {
-    inputVector = inputValue.Get<Vector2>();
-  }
-
-  private void OnJump()
-  {
-    isJumping = true;
-  }
+	////Only needed with new Input System 
+	//private void OnMovement(InputValue inputValue)
+  //{
+  //  inputVector = inputValue.Get<Vector2>();
+  //}
+	//
+  //private void OnJump()
+  //{
+  //  isJumping = true;
+  //}
 }
